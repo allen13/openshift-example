@@ -1,3 +1,5 @@
+kind: List
+metadata: {}
 apiVersion: v1
 items:
 - apiVersion: v1
@@ -10,7 +12,7 @@ items:
         port: 8000
         protocol: TCP
     selector:
-      name: frontend
+      name: surface
     sessionAffinity: None
     type: ClusterIP
 - apiVersion: v1
@@ -32,7 +34,7 @@ items:
     resources: {}
     source:
       git:
-        uri: https://github.com/openshift/ruby-hello-world.git
+        uri: https://github.com/allen13/openshift-example.git
       type: Git
     strategy:
       type: Docker
@@ -59,14 +61,14 @@ items:
           name: surface
       spec:
         containers:
-          - name: surface
-            image: surface
-            imagePullPolicy: IfNotPresent
-            ports:
-              - containerPort: 8000
-                protocol: TCP
-            resources: {}
-          restartPolicy: Always
+        - name: surface
+          image: surface
+          imagePullPolicy: IfNotPresent
+          ports:
+          - containerPort: 8000
+            protocol: TCP
+          resources: {}
+        restartPolicy: Always
     triggers:
       - type: ImageChange
         imageChangeParams:
@@ -78,5 +80,3 @@ items:
             name: surface:latest
       - type: ConfigChange
   status: {}
-kind: List
-metadata: {}
