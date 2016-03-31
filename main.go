@@ -22,7 +22,7 @@ import "gopl.io/ch7/eval"
 // -- copied from gopl.io/ch3/surface --
 
 const (
-	width, height = 1024, 768            // canvas size in pixels
+	width, height = 1920, 1200            // canvas size in pixels
 	cells         = 100                 // number of grid cells
 	xyrange       = 30.0                // x, y axis range (-xyrange..+xyrange)
 	xyscale       = width / 2 / xyrange // pixels per x or y unit
@@ -46,7 +46,7 @@ func corner(f func(x, y float64) float64, i, j int) (float64, float64) {
 
 func surface(w io.Writer, f func(x, y float64) float64) {
 	fmt.Fprintf(w, "<svg xmlns='http://www.w3.org/2000/svg' "+
-		"style='stroke: grey; fill: white; stroke-width: 0.7' "+
+		"style='stroke: red; fill: white; stroke-width: 0.9' "+
 		"width='%d' height='%d'>", width, height)
 	for i := 0; i < cells; i++ {
 		for j := 0; j < cells; j++ {
